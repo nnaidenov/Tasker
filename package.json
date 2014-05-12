@@ -1,0 +1,16 @@
+{
+  "name": "Tasker",
+  "version": "0.0.1",
+  "description": "Every Day Tasks Manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nikolay Naidenov",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.2.0",
+    "mongodb": "^1.4.3",
+    "socket.io": "^0.9.16"
+  }
+}
