@@ -9,8 +9,10 @@
   "author": "Nikolay Naidenov",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.2.0",
     "express": "^4.2.0",
     "mongodb": "^1.4.3",
+    "mongoose": "^3.8.9",
     "socket.io": "^0.9.16"
   }
 }
