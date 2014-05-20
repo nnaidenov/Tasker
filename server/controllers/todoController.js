@@ -26,7 +26,7 @@ module.exports = {
   },
   deleteTodo: function(req, res) {
     Todo.remove({
-      _id: req.params.todo_id
+      _id: req.params.id
     }, function(err, todo) {
       if(err) {
         res.send(err);

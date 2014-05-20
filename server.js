@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 var app = express();
+app.use(express.static(__dirname + '/public')); 
 
 mongoose.connect("mongodb://Admin:1234@ds051658.mongolab.com:51658/tasker");
 var db = mongoose.connection;
@@ -29,8 +30,10 @@ require('./server/models/todo');
 require('./server/routes/todos')(app);
 
 app.get('*', function(req, res) {
-  res.sendfile('./public/index.html');
+  res.sendfile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
-app.listen(8080);
-console.log("Server listenin on port 8080");
+var port = process.env.PORT || 8080;
+
+app.listen(port);
+console.log("Server listenin on port " + port);
