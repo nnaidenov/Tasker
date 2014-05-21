@@ -1,11 +1,13 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var database = require('./config/database');
+var port = process.env.PORT || 8080;
 
 var app = express();
-app.use(express.static(__dirname + '/public')); 
 
-mongoose.connect("mongodb://Admin:1234@ds051658.mongolab.com:51658/tasker");
+
+mongoose.connect(database.url);
 var db = mongoose.connection;
 
 db.once('open', function(err) {
@@ -24,19 +26,18 @@ db.on('error', function(err) {
   return;
 });
 
-  app.use(express.static(__dirname + "./public"));
+app.use(express.static(__dirname + "/public"));
   // app.use(express.logger('dev'));
-  app.use(bodyParser());
-  // app.use(express.methodOvverride());
+app.use(bodyParser());
 
 require('./server/models/todo');
 require('./server/routes/todos')(app);
 
 app.get('*', function(req, res) {
-  res.sendfile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+  res.sendfile(__dirname + '/public/index.html');
 });
 
-var port = process.env.PORT || 8080;
+
 
 app.listen(port);
 console.log("Server listenin on port " + port);
