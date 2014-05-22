@@ -1,64 +1,38 @@
 <!doctype html>
 
-<html data-ng-app="todoApp">
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Node/Angular Todo App</title>
+  <title>Node/Angular Todo App</title>
+
+  <!-- ************************* CSS ************************* -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./libs/toastr/toastr.css">
+
+<!-- ************************* Libs ************************* -->
+  <script src="./libs/jquery/dist/jquery.min.js"></script>
+  <script src="./libs/toastr/toastr.min.js"></script>
+
+  <script src="./libs/angular/angular.min.js"></script>
+  <script src="./libs/angular-route/angular-route.min.js"></script>
+  <script src="./libs/angular-resource/angular-resource.min.js"></script>
+  <script src="./libs/angular-route/angular-route.min.js"></script>
 
 
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<style>
-		html 					{ overflow-y:scroll; }
-		body 					{ padding-top:50px; }
-		#todo-list 				{ margin-bottom:30px; }
-	</style>
 
 
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
-
-	<script src="./js/controllers/main.js"></script>
-	<script src="./js/services/todos.js"></script>
-	<script src="./js/core.js"></script>
 </head>
-<body data-ng-controller="mainController">
-  <div class="conteiner">
-    <div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
-		</div>
-
-		<!-- TODO LIST -->
-		<div id="todo-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-					</label>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- FORM TO CREATE TODOS -->
-		<div id="todo-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
-					</div>
-
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-				</form>
-			</div>
-		</div>
-
-	</div>
+<body data-ng-app="todoApp">
+  <div class="conteiner" >
+    <div data-ng-view="">
+    </div>
   </div>
+
+  <!-- ************************* APP ************************* -->
+  <script src="./app/app.js"></script>
+  <script src="./app/controllers/main.js"></script>
+  <script src="./app/services/todos.js"></script>
 </body>
 </html>

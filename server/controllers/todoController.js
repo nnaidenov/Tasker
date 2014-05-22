@@ -29,7 +29,6 @@ module.exports = {
       _id: req.params.id
     }, function(err, todo) {
       if(err) {
-          console.log(111111111111111111111111);
         res.send(err);
       }
 
