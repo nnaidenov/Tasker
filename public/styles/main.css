@@ -1,0 +1,31 @@
+@font-face {
+  font-family: cocogoose;
+  src: url(./resouces/fonts/TransformersMovie.ttf);
+}
+
+
+.btn-lg, h1 {
+  font-family: 'Averia Sans Libre', cursive;
+}
+
+::-moz-placeholder {
+    font-family: 'Averia Sans Libre', cursive;
+}
+
+:-ms-input-placeholder {
+    font-family: 'Averia Sans Libre', cursive;
+}
+
+input:-moz-placeholder {
+    font-family: 'Averia Sans Libre', cursive;
+}
+
+::-webkit-input-placeholder {
+    font-family: 'Averia Sans Libre', cursive;
+}
+
+label {
+  font-family: 'Ubuntu Mono';
+  font-size: 18px;
+  line-height: 18px;
+}

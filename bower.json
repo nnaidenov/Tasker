@@ -17,10 +17,10 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.1",
-    "toastr": "~2.0.3",
+    "jquery": "~2.1.0",
     "angular": "~1.2.16",
     "angular-resource": "~1.2.16",
-    "angular-route": "~1.2.16"
+    "angular-route": "~1.2.16",
+    "angular-notify": "~1.1.0"
   }
 }

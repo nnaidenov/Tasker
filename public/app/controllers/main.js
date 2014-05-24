@@ -1,47 +1,49 @@
-angular.module('todoController', [])
-  .controller('mainController', function($scope, Todos) {
+app.controller('mainController', 
+   function($scope, Todos, notify) {
+  
     $scope.formData = {};
-
-Object.prototype.isEmpty = function() {
-    for(var key in this) {
-        if(this.hasOwnProperty(key))
-            return false;
-    }
-
-    return true;
-}
+    
     Todos.get()
       .success(function(data) {
         $scope.todos = data;
-        console.log(data);
       })
       .error(function(err) {
         console.log('Error: ' + err);
       });
 
     $scope.createTodo = function() {
-      console.log();
       if(!$scope.formData.isEmpty()) {
-        Todos.create($scope.formData)
+        var capitalizeTask = $scope.formData.text.capitalize();
+        Todos.create({text: capitalizeTask})
           .success(function(data) {
+            $scope.todos.push(data.data);
+            
             $scope.formData = {};
+            
+            notify({message: 'Successfully created.', template: './app/notificationTemplates/success.html'});
           })
           .error(function(err) {
             console.log('Error: ' + err);
           });
         } else {
-          alert('err');
+          notify({message: 'Please, fill the form.', template: './app/notificationTemplates/error.html'});
         }
     };
 
     $scope.deleteTodo = function(id) {
-      console.log(id);
       Todos.delete(id)
         .success(function(data) {
-          console.log('Deleted');
+          var possition = $scope.todos.length;
+
+          while( possition-- ) {
+              if( $scope.todos[possition]._id == id ) break;
+          }
+          
+          $scope.todos.splice(possition, 1);
+          notify({message: 'Successfully deleted!', template: './app/notificationTemplates/success.html'});
         })
         .error(function(err) {
-          console.log('Error: ' + err);
+          console.log('some error occurred: ' + err);
         });
     };
   });

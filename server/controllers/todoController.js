@@ -21,7 +21,10 @@ module.exports = {
         res.send(err);
       }
 
-      res.json(todo);
+      res.json({
+        result: "success", 
+        data: todo
+      });
     });
   },
   deleteTodo: function(req, res) {
@@ -32,7 +35,10 @@ module.exports = {
         res.send(err);
       }
 
-      res.json({result: "done"});
+      res.json({
+        result: "success",
+        data: todo
+      });
     });
   }
 };
