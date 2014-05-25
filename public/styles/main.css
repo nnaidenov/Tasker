@@ -29,3 +29,32 @@ label {
   font-size: 18px;
   line-height: 18px;
 }
+
+.notification {
+  position:fixed;
+  left: 25%;
+  top:-50px;
+  z-index: 9999;
+  width:50%;
+  text-align: center;
+  font-family: 'Averia Sans Libre', cursive;
+
+  font-size: 18px;
+  font-weight: bold;
+  padding:2px 8px 2px 8px;
+
+  -webkit-transition: top 0.5s ease-out,opacity 0.5s ease-out;
+  -moz-transition: top 0.5s ease-out,opacity 0.5s ease-out;
+  -o-transition: top 0.5s ease-out,opacity 0.5s ease-out;
+  transition: top 0.5s ease-out,opacity 0.5s ease-out;
+}
+
+.error-ntf {
+  border:1px solid rgb(216, 126, 126);
+  background-color: rgb(249, 190, 190);
+}
+
+.success-ntf {
+  border:1px solid rgb(140, 216, 126);
+  background-color: rgb(199, 249, 190);
+}
