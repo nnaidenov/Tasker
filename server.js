@@ -5,7 +5,8 @@ var database = require('./config/database');
 var port = process.env.PORT || 8080;
 
 var app = express();
-
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 
 mongoose.connect(database.url);
 var db = mongoose.connection;
@@ -39,5 +40,20 @@ app.get('*', function(req, res) {
   res.sendfile(__dirname + '/public/index.html');
 });
 
-app.listen(port);
+
+
+server.listen(port);
 console.log("Server listenin on port " + port);
+
+//var io = require('socket.io').listen(app);
+//console.log("Server listenin on port " + port);
+//io.sockets.on('connection', socket);
+
+
+io.sockets.on('connection', function(socket) {
+  socket.emit('message', {message: 'Hello!'});
+  socket.on('send', function(data) {
+   console.log(data);
+  });
+});
+

@@ -1,6 +1,11 @@
 app.controller('mainController', 
-   function($scope, Todos, notify) {
+   function($scope, Todos, notify, socket) {
   
+   socket.on('message', function(data) {
+     console.log(data);
+     socket.emit('send', {message: 'Done'});
+   });
+     
     $scope.formData = {};
     
     Todos.get()
